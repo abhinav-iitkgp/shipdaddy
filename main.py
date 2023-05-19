@@ -9,7 +9,7 @@ import openai
 openai.api_key = os.getenv('OPENAI_API_KEY')
 
 st.set_page_config(page_title="Ship Daddy", page_icon=":robot:")
-st.header("SHIP DADDY V1")
+st.header("SHIP DADDY V2")
 
 col1, col2 = st.columns(2)
 
