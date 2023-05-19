@@ -1,186 +1,84 @@
 import streamlit as st
-from langchain import PromptTemplate
-from langchain.llms import OpenAI
+# from langchain import PromptTemplate
+# from langchain.llms import OpenAI
 import os
+from dotenv import load_dotenv
+import openai
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
-template = """   
-Here's the database schema for the table "base_property":
-Field Name: id
-Field Type: Entity Key
-Data Type: Text
-Field Name: accurate_location
-Field Type: Category
-Data Type: Boolean
-Field Name: activate_later
-Field Type: Category
-Data Type: Boolean
-Field Name: activation_by
-Field Type: Email
-Data Type: Text
-Field Name: activation_date
-Field Type: No field type
-Data Type: BigInteger
-Field Name: activation_date_partitioned
-Field Type: Quantity
-Data Type: BigInteger
-Field Name: active
-Field Type: Category
-Data Type: Boolean
-Field Name: agent
-Field Type: No field type
-Data Type: Text
-Field Name: available_from
-Field Type: No field type
-Data Type: BigInteger
-Field Name: base_type
-Field Type: Category
-Data Type: Text
-Field Name: bathroom
-Field Type: Category
-Data Type: Integer
-Field Name: building_id
-Field Type: No field type
-Data Type: Text
-Field Name: city
-Field Type: City
-Data Type: Text
-Field Name: creation_date
-Field Type: No field type
-Data Type: BigInteger
-Field Name: cup_board
-Field Type: Category
-Data Type: Integer
-Field Name: event_time
-Field Type: No field type
-Data Type: Text
-Field Name: facing
-Field Type: Category
-Data Type: Text
-Field Name: floor
-Field Type: No field type
-Data Type: Integer
-Field Name: furnishing
-Field Type: Category
-Data Type: Text
-Field Name: future_activation_date
-Field Type: No field type
-Data Type: BigInteger
-Field Name: gym
-Field Type: Category
-Data Type: Boolean
-Field Name: inactive_reason
-Field Type: Category
-Data Type: Text
-Field Name: last_activation_date
-Field Type: No field type
-Data Type: BigInteger
-Field Name: last_update_date
-Field Type: No field type
-Data Type: BigInteger
-Field Name: last_updated_by
-Field Type: No field type
-Data Type: Text
-Field Name: latitude
-Field Type: Latitude
-Data Type: Float
-Field Name: lease_type
-Field Type: Category
-Data Type: Text
-Field Name: letout_date
-Field Type: No field type
-Data Type: BigInteger
-Field Name: lift
-Field Type: Category
-Data Type: Boolean
-Field Name: listing_score
-Field Type: Category
-Data Type: Text
-Field Name: locality
-Field Type: No field type
-Data Type: Text
-Field Name: locality_id
-Field Type: No field type
-Data Type: Text
-Field Name: longitude
-Field Type: Longitude
-Data Type: Float
-Field Name: managed
-Field Type: Category
-Data Type: Boolean
-Field Name: nb_locality
-Field Type: No field type
-Data Type: Text
-Field Name: negotiable
-Field Type: Category
-Data Type: Boolean
-Field Name: owner_id
-Field Type: Foreign Key
-Data Type: Text
-Field Name: parking
-Field Type: Category
-Data Type: Text
-Field Name: pin_code
-Field Type: No field type
-Data Type: Integer
-Field Name: power_backup
-Field Type: Category
-Data Type: Text
-Field Name: property_age
-Field Type: No field type
-Data Type: Integer
-Field Name: property_code
-Field Type: Category
-Data Type: Text
-Field Name: property_size
-Field Type: No field type
-Data Type: BigInteger
-Field Name: short_url
-Field Type: URL
-Data Type: Text
-Field Name: society
-Field Type: No field type
-Data Type: Text
-Field Name: sponsored
-Field Type: Category
-Data Type: Boolean
-Field Name: starship_offset
-Field Type: Score
-Data Type: BigInteger
-Field Name: state
-Field Type: Category
-Data Type: Text
-Field Name: street
-Field Type: No field type
-Data Type: Text
-Field Name: swimming_pool
-Field Type: Category
-Data Type: Boolean
-Field Name: total_floor
-Field Type: No field type
-Data Type: Integer
-Field Name: type
-Field Type: Category
-Data Type: Text
-Field Name: water_supply
-Field Type: Category
-Data Type: Text
-    
-Write a PostgreSQL query for the following:
-{question}
-    
-YOUR SQL QUERY:
-"""
+load_dotenv()
+def promptMaker(question):
+    return f"""   
+    Given the following table schema for the table "base_property" which contains all the properties listed on a website:
 
-prompt = PromptTemplate(
-    input_variables=["question"],
-    template=template,
-)
+    Field name         Data type
+    --------------------------------
+    id                  Text
+    accurate_location    Boolean
+    activate_later       Boolean
+    activation_by        Text
+    activation_date      BigInteger
+    activation_date_partitioned  BigInteger
+    active               Boolean
+    agent                Text
+    available_from       BigInteger
+    base_type            Text
+    bathroom             Integer
+    building_id          Text
+    city                 Text
+    creation_date        BigInteger
+    cup_board            Integer
+    event_time           Text
+    facing               Text
+    floor                Integer
+    furnishing           Text
+    future_activation_date     BigInteger
+    gym                  Boolean
+    inactive_reason      Text
+    last_activation_date BigInteger
+    last_update_date     BigInteger
+    last_updated_by      Text
+    latitude             Float
+    lease_type           Text
+    letout_date          BigInteger
+    lift                 Boolean
+    listing_score        Text
+    locality             Text
+    locality_id          Text
+    longitude            Float
+    managed              Boolean
+    nb_locality          Text
+    negotiable           Boolean
+    owner_id             Text
+    parking              Text
+    pin_code             Integer
+    power_backup         Text
+    property_age         Integer
+    property_code        Text
+    property_size        BigInteger
+    short_url            Text
+    society              Text
+    sponsored            Boolean
+    starship_offset      BigInteger
+    state                Text
+    street               Text
+    swimming_pool        Boolean
+    total_floor          Integer
+    type                 Text
+    water_supply         Text
 
-def load_LLM():
-    """Logic for loading the chain you want to use should go here."""
-    # Make sure your openai_api_key is set as an environment variable
-    llm = OpenAI(temperature=0.7, openai_api_key=os.environ["OPENAI_API_KEY"])
-    return llm
+    Write a PostgreSQL query for the question="{question}"
+
+    YOUR SQL QUERY:
+
+    """
+
+
+# def load_LLM():
+#     """Logic for loading the chain you want to use should go here."""
+#     # Make sure your openai_api_key is set as an environment variable
+#     llm = OpenAI(temperature=1, openai_api_key=os.environ["OPENAI_API_KEY"])
+#     return llm
 
 st.set_page_config(page_title="Ship Daddy", page_icon=":robot:")
 st.header("SHIP DADDY V1")
@@ -212,14 +110,13 @@ data_input = get_text()
 # st.button("*See An Example*", type='secondary', help="Click to see an example of the WebApp", on_click=update_text_with_example)
 
 st.markdown("### Your SQL Query:")
-
+sql_query=""
 if data_input:
-    
+    prompt_with_question = promptMaker(question=data_input)
+    sql_query = openai.Completion.create(
+            model="text-davinci-003",
+            prompt=prompt_with_question,
+            temperature=1,
+        )
 
-    llm = load_LLM()
-
-    prompt_with_question = prompt.format(question=data_input)
-
-    sql_query = llm(prompt_with_question)
-
-    st.write(sql_query)
+st.write(sql_query)
