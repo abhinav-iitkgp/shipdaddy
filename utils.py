@@ -68,6 +68,7 @@ As an Sql writer you only write the posrgreSQL query and explain it. You don't w
 def get_chatgpt_response(messages, model="gpt-3.5-turbo"):
     print("model: ", model)
     response = openai.ChatCompletion.create(
+    temperature=0,
     model=model,
     messages=messages
     )
