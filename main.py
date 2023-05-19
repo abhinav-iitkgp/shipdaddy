@@ -1,6 +1,7 @@
 import streamlit as st
 from langchain import PromptTemplate
 from langchain.llms import OpenAI
+import os
 
 template = """   
 Here's the database schema for the table "base_property":
@@ -178,7 +179,7 @@ prompt = PromptTemplate(
 def load_LLM():
     """Logic for loading the chain you want to use should go here."""
     # Make sure your openai_api_key is set as an environment variable
-    llm = OpenAI(temperature=0.7, openai_api_key="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")
+    llm = OpenAI(temperature=0.7, openai_api_key=os.environ["OPENAI_API_KEY"])
     return llm
 
 st.set_page_config(page_title="Ship Daddy", page_icon=":robot:")
