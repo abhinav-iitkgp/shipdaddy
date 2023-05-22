@@ -243,7 +243,7 @@ user_name                        Text
 user_owner_plan                  Text
 user_plan                        Text
 
-Given the following table schema for the table "insight_events.property_search" a new row is created when a user searches for properties
+Given the following table schema for the table "insight_events.property_search" a new row is created when a user searches for properties.
 
 
 Field name                               Data type
