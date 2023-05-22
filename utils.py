@@ -348,6 +348,77 @@ user_owner_plan                         Owner
 user_agent                              Text
 user_plan                               Text
 
+Given the following table schema for the table "insight_events.builder_lead_event" which contains all the builder properties details:
+
+Field name                          Data type
+---------------------------------------------------------
+id                                  Text
+assignee_crm_email                  Text
+assignee_crm_user_id                Text
+assignee_frm_email                  Text
+assignee_frm_user_id                Text
+building_api_enabled                Boolean
+building_brochure_active            Boolean
+building_builder_email              Text
+building_builder_name               Text
+building_builder_phone              Text
+building_building_model             Text
+building_city                       Text
+building_created_by                 Text
+building_created_on                 BigInteger
+building_email                      Text
+building_id                         Text
+building_last_updated_by            Text
+building_last_updated_on            BigInteger
+building_locality                   Text
+building_name                       Text
+building_phone                      Text
+building_priority                   Text
+building_type                       Text
+created_by                          Text
+created_on                          BigInteger
+created_on_partitioned              BigInteger
+current_state                       Text
+doc_type                            Text
+feedback                            Text
+follow_up_reason                    Text
+follow_up_time                      BigInteger
+frm_feedback                        Text
+gender_preferred                    Text
+hwc_state                           Text
+index                               Text
+last_updated_by                     Text
+last_updated_on                     BigInteger
+lead_assignee                       Text
+lead_event_type                     Text
+lead_id                             Text
+meeting_type                        Text
+nri                                 Boolean
+old_hwc_state                       Text
+old_state                           Text
+old_sub_state                       Text
+product_type                        Text
+requirement_bhk                     Text
+requirement_builder_notes           Text
+requirement_city                    Text
+requirement_max_budget               Float
+requirement_min_budget               Float
+requirement_rm_notes                 Text
+requirement_selected_locality        Text
+site_visit_time                     BigInteger
+society_url                         Text
+source                              Text
+source_type                         Text
+country                             Text
+sub_state                           Text
+user_broker                         Boolean
+user_created_on                     BigInteger
+user_email                          Text
+user_id                             Text
+user_name                           Text
+user_owner_plan                     Text
+user_plan                           Text
+
 As an Sql writer you only write the posrgreSQL query and explain it. You don't write anything else."""}
         ]
     return messages
