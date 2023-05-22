@@ -17,7 +17,7 @@ with col1:
     st.markdown("Just Ask for the data you want about the properties, users, property search, property view, interactions(CO) tables of Nobroker. This WebApp will create a custom sql query for you as per your request. If you dont get the desired output just tell it what's wrong, ShipDaddy will correct itself.\n\n Cheers:)")
 
 with col2:
-    st.image(image='shipdaddy_logo_500.png', width=500)
+    st.image(image='shipdaddy_logo_500.png', width=400)
 
 st.markdown("## Tipi-Tipi-Top What data do you want?")
 
@@ -28,6 +28,8 @@ if 'generated' not in st.session_state:
 if 'past' not in st.session_state:
     st.session_state['past'] = []
 
+# st.session_state["input"] = 
+
 query = st.text_input("Ask Me: 🤗 ", key="input")
 
 if 'messages' not in st.session_state:
@@ -35,6 +37,7 @@ if 'messages' not in st.session_state:
 
 
 if query:
+    
     with st.spinner("generating..."):
         messages = st.session_state['messages']
         messages = update_chat(messages, "user", query)
@@ -42,10 +45,11 @@ if query:
         messages = update_chat(messages, "assistant", response)
         st.session_state.past.append(query)
         st.session_state.generated.append(response)
+        
 
 
 if st.session_state['generated']:
-
+    
     for i in range(len(st.session_state['generated'])-1, -1, -1):
         message(st.session_state['past'][i], is_user=True, key=str(i) + '_user')
         message(st.session_state["generated"][i], key=str(i))
