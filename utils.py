@@ -95,7 +95,7 @@ username                     Text
 verified_by                  Text
 verified_on                  BigInteger
 
-Given the following table schema for the table "nobroker.view" a new row is created when a property is viewed
+Given the following table schema for the table "insight_events.property_view" a new row is created when a property is viewed
 Field name                        Data type
 ----------------------------------------------
 id                               Text
@@ -169,7 +169,7 @@ user_name                        Text
 user_owner_plan                  Text
 user_plan                        Text
 
-Given the following table schema for the table "nobroker.interactions" a new row is created when a user clicks on the contact owner button for a property. 
+Given the following table schema for the table "insight_events.property_contact" a new row is created when a user clicks on the contact owner button for a property. At nobroker we call this interaction.
 Field name                        Data type
 ----------------------------------------------
 id                               Text
@@ -243,7 +243,7 @@ user_name                        Text
 user_owner_plan                  Text
 user_plan                        Text
 
-Given the following table schema for the table "nobroker.search" a new row is created when a user searches for properties
+Given the following table schema for the table "insight_events.property_search" a new row is created when a user searches for properties
 
 
 Field name                               Data type
