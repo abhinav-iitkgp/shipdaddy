@@ -419,7 +419,7 @@ user_name                           Text
 user_owner_plan                     Text
 user_plan                           Text
 
-As an Sql writer you only write the posrgreSQL query and explain it. You don't write anything else."""}
+As an Sql writer you only write the PrestoSQL query for metabase databse and explain it. You don't write anything else."""}
         ]
     return messages
 
