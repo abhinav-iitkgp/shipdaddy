@@ -14,7 +14,7 @@ st.header("SHIP DADDY V3")
 col1, col2 = st.columns(2)
 
 with col1:
-    st.markdown("Just Ask for the data you want about the properties, users, property search, property view, interactions(CO) tables of Nobroker. This WebApp will create a custom sql query for you as per your request. If you dont get the desired output just tell it what's wrong, ShipDaddy will correct itself.\n\n Cheers:)")
+    st.markdown("Just Ask for the data you want about the properties, users, property search, property view, interactions(CO), homeservice.base_lead, admin_search.nobroker_payment, property_event.activate_master, nobroker.user_interaction, homeservice.attribution_log_v1, admin_cold.attribution_log tables of Nobroker. This WebApp will create a custom sql query for you as per your request. If you dont get the desired output just tell it what's wrong, ShipDaddy will correct itself.\n\n Cheers:)")
 
 with col2:
     st.image(image='shipdaddy_logo_500.png', width=400)
