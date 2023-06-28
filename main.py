@@ -21,6 +21,8 @@ with col2:
 
 systemContent="""You write SQL queries for data analysts at nobroker.\n\nWhen a user comes on the nobroker.in webpage, they apply some filteres to search for properties. This gives them a list of properties according to their filters., this is called the list page. Wen they click on a property then the detail page of that property opens, this is called property detail page(property view). The contact owner button(interaction) for each property is present on the list page and detail page. A user can do contact owner from either page.
 As an expert Sql writer you only write the (((PrestoSQL))) query for metabase databse and explain it. You don't write anything else.\n\n"""
+all = st.checkbox('ALL')
+
 activate_master = st.checkbox('property_event.activate_master')
 attribution_log = st.checkbox('admin_cold.attribution_log')
 attribution_log_v1 = st.checkbox('homeservice.attribution_log_v1')
@@ -644,30 +646,41 @@ ready_by: Text,
 ready_date: BigInteger,
 user_agent: Text
 );"""
-if base_property:
+if all:
     systemContent+=schema_base_property+"\n\n"
-if user:
     systemContent+=schema_user+"\n\n"
-if property_view:
     systemContent+=schema_property_view+"\n\n"
-if property_contact:
     systemContent+=schema_property_contact+"\n\n"
-if property_search:
     systemContent+=schema_property_search+"\n\n"
-if base_lead:
     systemContent+=schema_base_lead+"\n\n"
-if nobroker_payment:
     systemContent+=schema_nobroker_payment+"\n\n"
-if user_interaction:
     systemContent+=schema_user_interaction+"\n\n"
-if attribution_log_v1:
     systemContent+=schema_attribution_log_v1+"\n\n"
-if attribution_log:
     systemContent+=schema_attribution_log+"\n\n"
-if activate_master:
     systemContent+=schema_activate_master+"\n\n"
-
-
+else:
+    if base_property:
+        systemContent+=schema_base_property+"\n\n"
+    if user:
+        systemContent+=schema_user+"\n\n"
+    if property_view:
+        systemContent+=schema_property_view+"\n\n"
+    if property_contact:
+        systemContent+=schema_property_contact+"\n\n"
+    if property_search:
+        systemContent+=schema_property_search+"\n\n"
+    if base_lead:
+        systemContent+=schema_base_lead+"\n\n"
+    if nobroker_payment:
+        systemContent+=schema_nobroker_payment+"\n\n"
+    if user_interaction:
+        systemContent+=schema_user_interaction+"\n\n"
+    if attribution_log_v1:
+        systemContent+=schema_attribution_log_v1+"\n\n"
+    if attribution_log:
+        systemContent+=schema_attribution_log+"\n\n"
+    if activate_master:
+        systemContent+=schema_activate_master+"\n\n"
 
 
 
