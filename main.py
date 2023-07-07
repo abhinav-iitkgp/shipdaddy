@@ -634,7 +634,7 @@ property_photo_available: Boolean,
 property_state: Text,
 property_photo_count: BigInteger,
 property_inactive_reason: Text,
-property_price: BigInteger,
+property_price: BigInteger,(this is the only place where we get the price/rent of the property)
 property_property_type: Text,
 property_shared_accomodation: Boolean,
 property_sponsored: Boolean,
