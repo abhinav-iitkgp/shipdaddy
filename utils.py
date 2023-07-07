@@ -8,7 +8,7 @@ def get_initial_message(systemContent):
         ]
     return messages
 
-def get_chatgpt_response(messages, model="gpt-3.5-turbo"):
+def get_chatgpt_response(messages, model="gpt-4"):
     print("model: ", model)
     response = openai.ChatCompletion.create(
     temperature=0,
