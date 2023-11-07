@@ -16,7 +16,7 @@ def get_chatgpt_response(messages, model="gpt-4-1106-preview"):
     model=model,
     messages=messages
     )
-    return  response['choices'][0]['message']['content']
+    return  response.choices[0].message
 
 def update_chat(messages, role, content):
     messages.append({"role": role, "content": content})
