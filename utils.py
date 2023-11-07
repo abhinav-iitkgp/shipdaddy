@@ -1,4 +1,5 @@
-import openai
+from openai import OpenAI
+client = OpenAI()
 import streamlit as st
 
 def get_initial_message(systemContent):
@@ -8,9 +9,9 @@ def get_initial_message(systemContent):
         ]
     return messages
 
-def get_chatgpt_response(messages, model="gpt-4"):
+def get_chatgpt_response(messages, model="gpt-4-1106-preview"):
     print("model: ", model)
-    response = openai.ChatCompletion.create(
+    response = client.chat.completions.create(
     temperature=0,
     model=model,
     messages=messages
